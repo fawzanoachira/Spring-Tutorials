@@ -3,7 +3,33 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="std" class="entity.Student">
+    <bean name="std" class="entity.Student" scope="singleton">
+        <!-- <property name="stdId" value="1"/>
+        <property name="stdName" value="Me"/>
+        <property name="stdAge" value="24"/> -->
+
+        <!-- <constructor-arg name="stdId" value="1"/> Order provided in the entity class for the contructor is strict
+        <constructor-arg name="stdName" value="Me"/>
+        <constructor-arg name="stdAge" value="24"/> -->
+
+        <!-- <constructor-arg type="int" value="1"/> Order provided in the entity class for the contructor is strict
+        <constructor-arg type="String" value="Me"/>
+        <constructor-arg type="int" value="24"/> -->
+        
+        <!-- <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="Me"/>
+        <constructor-arg index="2" value="24"/> -->
+
+        <property name="stdId" value="1"/>
+        <property name="stdName" value="Me"/>
+        <property name="stdAge" value="24"/>
+        <property name="address" ref="address"/>
+
+    </bean>
+
+    <bean name="address" class="entity.Address" scope="singleton">
+        <property name="houseName" value="Aramam"/>
+        <property name="housePlace" value="Krishnapuram"/>
 
     </bean>
 
