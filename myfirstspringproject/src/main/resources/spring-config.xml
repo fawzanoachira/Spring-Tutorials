@@ -3,7 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="std" class="entity.Student" scope="singleton">
+    <!-- <bean name="std" class="entity.Student" scope="singleton"> -->
+    <bean name="std" class="entity.Student" scope="singleton" autowire="byName">
+    <!-- <bean name="std" class="entity.Student" scope="singleton" autowire="byType"> -->
+    <!-- <bean name="std" class="entity.Student" scope="singleton" autowire="constructor"> -->
+    <!-- <bean name="std" class="entity.Student" scope="singleton" autowire="no"> -->
         <!-- <property name="stdId" value="1"/>
         <property name="stdName" value="Me"/>
         <property name="stdAge" value="24"/> -->
@@ -20,10 +24,20 @@
         <constructor-arg index="1" value="Me"/>
         <constructor-arg index="2" value="24"/> -->
 
-        <property name="stdId" value="1"/>
+        <!-- <property name="stdId" value="1"/>
         <property name="stdName" value="Me"/>
         <property name="stdAge" value="24"/>
-        <property name="address" ref="address"/>
+        <property name="address" ref="address"/> -->
+
+        <!-- For Autowiring examples-->
+        <!-- <property name="stdId" value="1"/>
+        <property name="stdName" value="Me"/>
+        <property name="stdAge" value="24"/> -->
+
+        <!-- For cosntructor autowiring use every attribute injection constructor wise-->
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="Me"/>
+        <constructor-arg index="2" value="24"/>
 
     </bean>
 
