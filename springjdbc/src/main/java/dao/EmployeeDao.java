@@ -1,5 +1,10 @@
 package dao;
 
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import entity.Employee;
@@ -28,5 +33,16 @@ public class EmployeeDao {
         String deleteQuery = "DELETE FROM employee where empId = ?;";
         int delete = jdbcTemplate.update(deleteQuery, empId);
         return delete;
+    }
+
+    public List<Employee> getAllEmployees() {
+        String query = "SELECT * FROM employee";
+        try {
+            List<Employee> employees = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Employee.class));
+            return employees;
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 }
