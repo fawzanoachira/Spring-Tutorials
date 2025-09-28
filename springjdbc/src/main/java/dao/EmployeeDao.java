@@ -16,4 +16,17 @@ public class EmployeeDao {
         int update = jdbcTemplate.update(insertQuery, employee.getEmpName(), employee.getEmpSalary());
         return update;
     }
+
+    public int update(Employee employee, int empId) {
+        String updateQuery = "UPDATE employee set employeeName = ?, empSalary = ? where empId = ?;";
+        int update = jdbcTemplate.update(updateQuery, employee.getEmpName(), employee.getEmpSalary(),
+                empId);
+        return update;
+    }
+
+    public int delete(int empId) {
+        String deleteQuery = "DELETE FROM employee where empId = ?;";
+        int delete = jdbcTemplate.update(deleteQuery, empId);
+        return delete;
+    }
 }

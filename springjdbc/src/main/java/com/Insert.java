@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import dao.EmployeeDao;
 import entity.Employee;
 
-public class App {
+public class Insert {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("spring.xml");
