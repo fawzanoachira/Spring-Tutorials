@@ -45,4 +45,11 @@ public class EmployeeDao {
             return Collections.emptyList();
         }
     }
+
+    public Employee fetchEmployee(int empId) {
+        String query = "SELECT * FROM Employee WHERE empId = ?";
+        RowMapperImpl rowMapperImpl = new RowMapperImpl();
+        Employee queryForObject = jdbcTemplate.queryForObject(query, rowMapperImpl, empId);
+        return queryForObject;
+    }
 }
