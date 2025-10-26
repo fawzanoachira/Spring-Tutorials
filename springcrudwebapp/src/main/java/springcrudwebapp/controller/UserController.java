@@ -25,7 +25,7 @@ public class UserController {
         String password = request.getParameter("password");
         user.setUserName(username);
         user.setUserPassword(password);
-        userService.saveData(user);
+        userService.persist(user);
         ModelAndView modelAndView = new ModelAndView();
         String str = "Inserted Successfully";
         modelAndView.addObject("str", str);

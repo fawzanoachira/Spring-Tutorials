@@ -7,7 +7,7 @@ import springcrudwebapp.models.User;
 @Service
 public class UserService {
 
-    public int saveData(User user) {
+    public int persist(User user) {
         return 0;
     }
 }
