@@ -25,11 +25,16 @@ public class UserController {
         String password = request.getParameter("password");
         user.setUserName(username);
         user.setUserPassword(password);
-        userService.persist(user);
+        int persist = userService.persist(user);
         ModelAndView modelAndView = new ModelAndView();
-        String str = "Inserted Successfully";
-        modelAndView.addObject("str", str);
-        modelAndView.setViewName("output.jsp");
-        return modelAndView;
+        if (persist > 1) {
+            String str = "Inserted Successfully";
+            modelAndView.addObject("str", str);
+            modelAndView.setViewName("output.jsp");
+            return modelAndView;
+        } else {
+            modelAndView.setViewName("error.jsp");
+            return modelAndView;
+        }
     }
 }
