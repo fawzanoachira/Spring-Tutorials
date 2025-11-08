@@ -15,7 +15,27 @@ public class UserService {
     public int persist(User user) {
         int persist = userRepository.persist(user);
 
-        if (persist > 1) {
+        if (persist >= 1) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public int update(User user) {
+        int update = userRepository.update(user);
+
+        if (update >= 1) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public int delete(User user) {
+        int delete = userRepository.delete(user);
+
+        if (delete >= 1) {
             return 1;
         } else {
             return 0;

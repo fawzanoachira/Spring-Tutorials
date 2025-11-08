@@ -12,6 +12,8 @@
         <input type="password" name="password" id="">
         <input type="submit" value="Sign Up">
     </form>
+
+    <a href="update.jsp">Update</a> <a href="delete.jsp">Delete</a> <a href="fetch.jsp">Fetch</a>
 </body>
 
 </html>

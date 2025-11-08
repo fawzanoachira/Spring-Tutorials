@@ -27,8 +27,46 @@ public class UserController {
         user.setUserPassword(password);
         int persist = userService.persist(user);
         ModelAndView modelAndView = new ModelAndView();
-        if (persist > 1) {
+        if (persist > 0) {
             String str = "Inserted Successfully";
+            modelAndView.addObject("str", str);
+            modelAndView.setViewName("output.jsp");
+            return modelAndView;
+        } else {
+            modelAndView.setViewName("error.jsp");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/update")
+    public ModelAndView updateData(HttpServletRequest request, HttpServletResponse response) {
+        Integer user_id = Integer.parseInt(request.getParameter("userid"));
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        user.setUserId(user_id);
+        user.setUserName(username);
+        user.setUserPassword(password);
+        int update = userService.update(user);
+        ModelAndView modelAndView = new ModelAndView();
+        if (update > 0) {
+            String str = "Updated Successfully";
+            modelAndView.addObject("str", str);
+            modelAndView.setViewName("output.jsp");
+            return modelAndView;
+        } else {
+            modelAndView.setViewName("error.jsp");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/delete")
+    public ModelAndView deleteData(HttpServletRequest request, HttpServletResponse response) {
+        Integer user_id = Integer.parseInt(request.getParameter("userid"));
+        user.setUserId(user_id);
+        int delete = userService.delete(user);
+        ModelAndView modelAndView = new ModelAndView();
+        if (delete > 0) {
+            String str = "Deleted Successfully";
             modelAndView.addObject("str", str);
             modelAndView.setViewName("output.jsp");
             return modelAndView;
