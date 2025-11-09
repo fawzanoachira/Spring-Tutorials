@@ -5,7 +5,7 @@
 </head>
 
 <body>
-    <form action="fetch" method="post">
+    <form action="fetch" method="get">
         <label for="userid">User Id: </label>
         <input type="text" name="userid" id=""> <br>
          <input type="submit" value="Fetch User">

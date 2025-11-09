@@ -59,4 +59,17 @@ public class UserRepository {
         }
     }
 
+    public User fetch(User user) {
+        try {
+            Configuration cfg = new Configuration().configure().addAnnotatedClass(User.class);
+            Session openSession = cfg.buildSessionFactory().openSession();
+            User fetched_user = openSession.find(User.class, user.getUserId());
+            openSession.close();
+
+            return fetched_user;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

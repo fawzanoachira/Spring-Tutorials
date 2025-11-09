@@ -41,4 +41,14 @@ public class UserService {
             return 0;
         }
     }
+
+    public User fetchUser(User user) {
+        User fetched_user = userRepository.fetch(user);
+
+        if (fetched_user != null) {
+            return fetched_user;
+        } else {
+            return null;
+        }
+    }
 }

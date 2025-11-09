@@ -2,6 +2,7 @@ package springcrudwebapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,6 +70,23 @@ public class UserController {
             String str = "Deleted Successfully";
             modelAndView.addObject("str", str);
             modelAndView.setViewName("output.jsp");
+            return modelAndView;
+        } else {
+            modelAndView.setViewName("error.jsp");
+            return modelAndView;
+        }
+    }
+
+    @GetMapping("/fetch")
+    public ModelAndView fetchUser(HttpServletRequest request, HttpServletResponse response) {
+        Integer user_id = Integer.parseInt(request.getParameter("userid"));
+        user.setUserId(user_id);
+        User fetchUser = userService.fetchUser(user);
+        ModelAndView modelAndView = new ModelAndView();
+        if (fetchUser != null) {
+            modelAndView.addObject("userName", fetchUser.getUserName());
+            modelAndView.addObject("userPassword", fetchUser.getUserPassword());
+            modelAndView.setViewName("fetch_user.jsp");
             return modelAndView;
         } else {
             modelAndView.setViewName("error.jsp");
